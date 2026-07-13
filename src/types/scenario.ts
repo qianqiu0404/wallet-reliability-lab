@@ -53,6 +53,8 @@ export interface EvidenceRecord {
   summary: string
   status: 'verified' | 'target'
   relatedScenarioIds: string[]
+  sourceUrl: string
+  sourceLabel: string
 }
 
 export interface RunSnapshot {

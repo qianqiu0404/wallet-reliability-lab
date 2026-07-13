@@ -18,9 +18,8 @@ function scenarioName(id: string) {
       <article v-for="(item, index) in filtered" :key="item.id">
         <header><span>{{ String(index + 1).padStart(2, '0') }}</span><em :class="item.status">{{ item.status === 'verified' ? '已验证' : '目标设计' }}</em></header>
         <p class="evidence-label">{{ item.label }}</p><h2>{{ item.testName }}</h2><small>{{ item.sourceRole }}</small><p>{{ item.summary }}</p>
-        <footer><router-link v-for="scenarioId in item.relatedScenarioIds" :key="scenarioId" :to="`/lab/${scenarioId}`">{{ scenarioName(scenarioId) }}</router-link></footer>
+        <footer><a :href="item.sourceUrl" target="_blank" rel="noreferrer">{{ item.sourceLabel }} ↗</a><router-link v-for="scenarioId in item.relatedScenarioIds" :key="scenarioId" :to="`/lab/${scenarioId}`">{{ scenarioName(scenarioId) }}</router-link></footer>
       </article>
     </section>
   </div>
 </template>
-
