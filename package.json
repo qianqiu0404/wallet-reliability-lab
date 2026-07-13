@@ -1,0 +1,32 @@
+{
+  "name": "wallet-reliability-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "runner": "go run ./cmd/runner",
+    "test:runner": "go test ./...",
+    "test:runner:race": "go test -race ./...",
+    "vet:runner": "go vet ./...",
+    "check:public": "node scripts/check-public.mjs",
+    "check:catalog": "node scripts/check-engine-catalog.mjs"
+  },
+  "dependencies": {
+    "vue": "^3.5.13",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/test-utils": "^2.4.6",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.3.2",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^2.2.8"
+  }
+}

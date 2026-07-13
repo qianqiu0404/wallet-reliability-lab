@@ -1,0 +1,25 @@
+{
+  "sourceRepository": "https://github.com/qianqiu0404/web3-wallet-engineer-lab",
+  "sourceRelease": "scenario-catalog-v1.0.0",
+  "sourceCommit": "aff360a13787403d1f4fa2d4f39df1974b473827",
+  "catalogVersion": 1,
+  "catalogSha256": "837daf5d19e5710095dfc1a964a5ca5db6ca9408394dd36a67d9a467410490ab",
+  "sourceUrl": "https://raw.githubusercontent.com/qianqiu0404/web3-wallet-engineer-lab/scenario-catalog-v1.0.0/scenarios/catalog.json",
+  "scenarioMappings": [
+    {
+      "labScenarioId": "normal-withdrawal",
+      "engineScenarioId": "normal-withdrawal",
+      "relationship": "direct baseline"
+    },
+    {
+      "labScenarioId": "retryable-broadcast",
+      "engineScenarioId": "broadcast-unknown",
+      "relationship": "same raw transaction and no second fund action"
+    },
+    {
+      "labScenarioId": "compensation-recovery",
+      "engineScenarioId": "chain-success-local-failure",
+      "relationship": "canonical chain fact drives idempotent local recovery"
+    }
+  ]
+}
