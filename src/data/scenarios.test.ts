@@ -35,5 +35,11 @@ describe('scenario truth model', () => {
       }
     }
   })
-})
 
+  it('links every evidence record to public source evidence', () => {
+    for (const evidence of evidenceRecords) {
+      expect(evidence.sourceUrl).toMatch(/^https:\/\/github\.com\/qianqiu0404\//)
+      expect(evidence.sourceLabel.length).toBeGreaterThan(0)
+    }
+  })
+})

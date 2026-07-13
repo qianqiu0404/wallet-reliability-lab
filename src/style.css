@@ -230,6 +230,8 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(0, 113, 227, .28
 .evidence-mini-list em { border-radius: 999px; padding: 3px 6px; font: 650 7px/1 var(--mono); font-style: normal; }
 .evidence-mini-list em.verified { color: var(--green); background: var(--green-soft); }
 .evidence-mini-list em.target { color: var(--amber); background: var(--amber-soft); }
+.evidence-actions { display: grid; justify-items: end; gap: 5px; }
+.evidence-actions a { color: var(--blue); font: 650 7px/1 var(--mono); }
 .inspector-empty { display: grid; align-content: center; min-height: 390px; padding: 25px 8px; }
 .inspector-empty > span { color: var(--line); font: 700 70px/1 var(--mono); }
 .inspector-empty h2 { margin: 13px 0 8px; font-size: 23px; }
@@ -407,4 +409,3 @@ button:focus-visible, a:focus-visible { outline: 3px solid rgba(0, 113, 227, .28
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
-

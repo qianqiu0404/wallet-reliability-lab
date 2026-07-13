@@ -36,7 +36,7 @@ const evidence = computed(() => getEvidence(props.step?.evidenceIds ?? []))
           <span>Evidence</span>
           <article v-for="item in evidence" :key="item.id">
             <div><strong>{{ item.testName }}</strong><small>{{ item.sourceRole }}</small></div>
-            <em :class="item.status">{{ item.status === 'verified' ? '已验证' : '目标设计' }}</em>
+            <div class="evidence-actions"><em :class="item.status">{{ item.status === 'verified' ? '已验证' : '目标设计' }}</em><a :href="item.sourceUrl" target="_blank" rel="noreferrer" :aria-label="`${item.sourceLabel}：${item.testName}`">源码 ↗</a></div>
           </article>
         </div>
       </template>
@@ -49,4 +49,3 @@ const evidence = computed(() => getEvidence(props.step?.evidenceIds ?? []))
     </div>
   </aside>
 </template>
-

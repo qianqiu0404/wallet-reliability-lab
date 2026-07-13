@@ -21,6 +21,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '验证提现状态只能沿允许路径推进，禁止从 create_unsign 直接跳到 wallet_done，也禁止 notified 回退。',
     status: 'verified',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast', 'compensation-recovery'],
+    sourceUrl: 'https://github.com/qianqiu0404/web3-wallet-engineer-lab/blob/main/internal/reliability/model_test.go#L8',
+    sourceLabel: '公开等价状态测试',
   },
   {
     id: 'ev-risk',
@@ -31,6 +33,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '验证 risk-service 生成的审批哈希能够被签名机按相同规范校验。',
     status: 'verified',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast', 'compensation-recovery'],
+    sourceUrl: 'https://github.com/qianqiu0404/web3-wallet-engineer-lab/blob/main/internal/reliability/model_test.go#L83',
+    sourceLabel: '公开风险边界测试',
   },
   {
     id: 'ev-nonce',
@@ -41,6 +45,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '构建待签名交易必须携带稳定 nonce，避免签名前后得到不同交易。',
     status: 'verified',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast'],
+    sourceUrl: 'https://github.com/qianqiu0404/web3-wallet-engineer-lab/blob/main/internal/service/wallet_test.go#L11',
+    sourceLabel: '公开 nonce 测试',
   },
   {
     id: 'ev-sign-policy',
@@ -51,6 +57,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '签名机同时校验 wallet approval 与 risk approval，拒绝绕过策略的签名请求。',
     status: 'verified',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast'],
+    sourceUrl: 'https://github.com/qianqiu0404/web3-wallet-engineer-lab/blob/main/internal/reliability/model_test.go#L83',
+    sourceLabel: '公开签名门禁测试',
   },
   {
     id: 'ev-broadcast',
@@ -61,6 +69,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '只持久化成功或明确失败的广播结果；可重试失败保持 signed，不产生余额副作用。',
     status: 'verified',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast'],
+    sourceUrl: 'https://github.com/qianqiu0404/wallet-reliability-lab/blob/main/src/data/scenarios.test.ts#L13',
+    sourceLabel: '查看广播场景断言',
   },
   {
     id: 'ev-rawtx',
@@ -71,6 +81,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '通过签名哈希关联 withdraw 与 sendout，并复用已经落库的 signed raw transaction。',
     status: 'verified',
     relatedScenarioIds: ['retryable-broadcast'],
+    sourceUrl: 'https://github.com/qianqiu0404/web3-wallet-engineer-lab/blob/main/internal/reliability/model_test.go#L41',
+    sourceLabel: '公开结果未知测试',
   },
   {
     id: 'ev-stale',
@@ -81,6 +93,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '补偿任务只选择超过阈值、状态仍为 broadcasted 且具有交易哈希的记录。',
     status: 'verified',
     relatedScenarioIds: ['compensation-recovery'],
+    sourceUrl: 'https://github.com/qianqiu0404/wallet-reliability-lab/blob/main/internal/lab/store_test.go#L116',
+    sourceLabel: '查看补偿阈值测试',
   },
   {
     id: 'ev-connected',
@@ -91,6 +105,8 @@ export const evidenceRecords: EvidenceRecord[] = [
     summary: '真实服务连接只在显式开关、loopback 目标和本地沙箱同时满足时开放。',
     status: 'target',
     relatedScenarioIds: ['normal-withdrawal', 'retryable-broadcast', 'compensation-recovery'],
+    sourceUrl: 'https://github.com/qianqiu0404/wallet-reliability-lab/blob/main/internal/lab/connector_test.go#L5',
+    sourceLabel: '查看 loopback 门禁',
   },
 ]
 
@@ -297,4 +313,3 @@ export function getScenario(id: string): ScenarioDefinition {
 export function getEvidence(ids: string[]): EvidenceRecord[] {
   return ids.map(id => evidenceRecords.find(item => item.id === id)).filter((item): item is EvidenceRecord => Boolean(item))
 }
-
